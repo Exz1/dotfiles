@@ -1,4 +1,4 @@
-# Kurasixo's Dotifiles
+# kurasixo's Dotifiles
 
 This is a collection of dotfiles I use for Arch Linux with i3wm
 
