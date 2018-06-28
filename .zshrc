@@ -3,11 +3,19 @@
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/kurnakov/.oh-my-zsh
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+#ZSH_THEME="wezm"
+ZSH_THEME="lambda-gitster"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,43 +59,59 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+	npm
+  zsh-autosuggestions
+	lol
+	docker
+	zsh_reload
+	nyan
+)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
-#Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-synclient TapButton1=1
-synclient TapButton2=3
-synclient TapButton3=2
-
-clear
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export ANDROID_SDK=/home/kurnakov/Android/Sdk
+export ANDROID_NDK=/home/kurnakov/Android/Ndk
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+DOCKER_HOST=127.0.0.1
+
+alias chromium="chromium --disable-web-security --user-data-dir"
 alias pac="pacaur -S"
-alias gpu="DRI_PRIME=1"
-alias res="pacaur -R"
+alias update="sudo pacman -Syyu"
+alias start_vnc="x11vnc -noxdamage -shared -dontdisconnect -many -noxfixes -viewonly"
+alias danya="vncviewer 192.168.88.244"
+alias nikita="vncviewer 192.168.88.223"
+alias david="vncviewer 192.168.88.158"
+alias rs="source .venv/bin/activate && ./manage.py runserver 0.0.0.0:8000"
+alias migrate="./manage.py migrate"
+alias health="cd ~/projects/health/"
+alias sitekgb="cd ~/projects/site/"
