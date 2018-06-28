@@ -2,4 +2,8 @@
 	name = Vadim
 	email = kurasixo@gmail.com
 [core]
-	editor = vim
+	editor = vim 
+[alias]
+	co = checkout
+	hist = history
+	st = status
