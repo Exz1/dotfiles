@@ -6,8 +6,14 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-polybar i3topbar -c ~/.config/polybar/polybar.conf
-polybar i3bottombar -c ~/.config/polybar/polybar.conf
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload i3bottombar1 -c ~/.config/polybar/polybar1.conf &
+		MONITOR=$m polybar --reload i3topbar1 -c ~/.config/polybar/polybar1.conf &
+  done
+else
+  polybar --reload example &
+fi
 
+# Launch bar1 and bar2
 echo "Bars launched..."
