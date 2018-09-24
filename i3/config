@@ -5,7 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 4
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -24,7 +24,7 @@ for_window [class=".*"] resize set 1000 600
 
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run 
@@ -43,7 +43,6 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -111,12 +110,12 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 # assign programs to their workspaces
 #assign [class="URxvt"] $workspace1
 assign [class="Chromium"] $workspace2
-assign [class="code-oss"] $workspace3
+assign [class="Code - OSS"] $workspace3
 
 
 # gaps settings
 gaps outer 2
-gaps inner 2
+gaps inner 5
 #smart_gaps on
 
 set $Locker light-locker-command -l && sleep 1
@@ -136,7 +135,8 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Shift+e mode "$mode_system"
-
+#bindsym $mod+Shift+l exec "scrot /tmp/screen_locked.png;mogrify -scale 25% -scale 400% /tmp/screen_locked.png;/usr/bin/i3lock -i /tmp/screen_locked.png"
+bindsym $mod+Shift+l exec /home/kurnakov/sr.sh
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -163,8 +163,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #303030
-set $inactive-bg-color   #ffa000
+set $bg-color 	         #212733
+set $inactive-bg-color   #1A202B
 set $text-color          #93E5CC
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
@@ -202,7 +202,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-#exec --no-startup-id compton
+exec --no-startup-id compton
 exec --no-startup-id i3-msg 'workspace $workspace2; exec chromium --disable-web-security --user-data-dir'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec code-oss' 
-exec --no-startup-id i3-msg 'workspace $workspace1; exec urxvt'
+exec --no-startup-id i3-msg 'workspace $workspace1; exec terminator'
