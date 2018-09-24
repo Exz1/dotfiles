@@ -1,0 +1,39 @@
+{
+    "window.zoomLevel": 1,
+    "telemetry.enableTelemetry": false,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "editor.tabSize": 2,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "window.menuBarVisibility": "hidden",
+    "[python]": {
+        "editor.tabSize": 4,
+    },
+    "workbench.editor.showTabs": true,
+    "editor.rulers": [
+        79,
+        100
+    ],
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "eslint.workingDirectories": [
+        "./", "./frontend",
+    ],
+    "eslint.options": { 
+        "configFile": "./.eslintrc.js" 
+    },
+    "javascript.validate.enable": false,
+    "jest.showCoverageOnLoad": true,
+    "materialTheme.fixIconsRunning": false,
+    "workbench.iconTheme": "ayu",
+    "workbench.colorCustomizations": {},
+    "materialTheme.accentPrevious": "",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Ayu Mirage",
+}
